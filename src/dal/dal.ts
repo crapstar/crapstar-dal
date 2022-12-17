@@ -1,6 +1,9 @@
 import * as movie from "../models/movie";
 import * as genre from "../models/genre";
 import * as movie_genre from "../models/movie_genre";
+import * as emotion from "../models/emotion";
+import * as genre_emotion from "../models/genre_emotion";
+import * as movie_emotion from "../models/movie_emotion";
 
 import { AbstractDal, SequelizeHooks } from "./abstractDal";
 import { DatabaseOptions } from "./databaseOptions";
@@ -9,34 +12,49 @@ export default class Dal extends AbstractDal {
   public Movie: movie.movieModel;
   public Genre: genre.genreModel;
   public MovieGenre: movie_genre.movie_genreModel;
+  public Emotion: emotion.emotionModel;
+  public GenreEmotion: genre_emotion.genre_emotionModel;
+  public MovieEmotion: movie_emotion.movie_emotionModel;
 
   constructor(options: DatabaseOptions, mock = false, hooks?: SequelizeHooks) {
     super(options, mock, hooks);
     this.Movie = movie.initMovieTable(this.Sequelize);
     this.Genre = genre.initGenreTable(this.Sequelize);
+    this.MovieGenre = movie_genre.initMovieGenreTable(this.Sequelize);
+    this.Emotion = emotion.initEmotionTable(this.Sequelize);
+    this.GenreEmotion = genre_emotion.initGenreEmotionTable(this.Sequelize);
+    this.MovieEmotion = movie_emotion.initMovieEmotionTable(this.Sequelize);
 
-    this.Movie.hasMany(this.MovieGenre, {
+    this.Movie.belongsToMany(this.Genre, {
+      through: this.MovieGenre,
+    });
+
+    this.Genre.belongsToMany(this.Movie, {
+      through: this.MovieGenre,
+    });
+
+    this.Movie.hasMany(this.MovieEmotion, {
       foreignKey: "movie_id",
       sourceKey: "id",
-      as: "genres",
+      as: "emotions",
     });
 
-    this.Genre.hasMany(this.MovieGenre, {
+    this.Genre.hasMany(this.GenreEmotion, {
       foreignKey: "genre_id",
       sourceKey: "id",
-      as: "movies",
+      as: "emotions",
     });
 
-    this.MovieGenre.belongsTo(this.Movie, {
-      foreignKey: "movie_id",
+    this.Emotion.belongsTo(this.MovieEmotion, {
+      foreignKey: "emotion_id",
       targetKey: "id",
-      as: "movie",
+      as: "emotion",
     });
 
-    this.MovieGenre.belongsTo(this.Genre, {
-      foreignKey: "genre_id",
+    this.Emotion.belongsTo(this.GenreEmotion, {
+      foreignKey: "emotion_id",
       targetKey: "id",
-      as: "genre",
+      as: "emotion",
     });
   }
 }

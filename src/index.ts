@@ -2,6 +2,9 @@ export * from "./models/common";
 export * from "./models/movie";
 export * from "./models/genre";
 export * from "./models/movie_genre";
+export * from "./models/emotion";
+export * from "./models/genre_emotion";
+export * from "./models/movie_emotion";
 
 export {
   Op,
