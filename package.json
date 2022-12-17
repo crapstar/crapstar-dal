@@ -1,0 +1,10 @@
+{
+  "name": "crapstar-dal",
+  "version": "0.0.0",
+  "description": "Data access layer to be used accross crapstar app",
+  "main": "index.js",
+  "repository": "git@github.com:crapstar/dal.git",
+  "author": "Ozan Ertürk <saitozanerturk@gmail.com>",
+  "license": "MIT",
+  "private": false
+}
