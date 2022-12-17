@@ -1,3 +1,6 @@
+export * from "./models/common";
+export * from "./models/movie";
+
 export {
   Op,
   QueryTypes,
@@ -9,3 +12,5 @@ export {
   WhereOptions,
   Transaction,
 } from "sequelize";
+
+export { default as Dal } from "./dal/dal";
