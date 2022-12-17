@@ -1,10 +1,10 @@
+import { DataTypes, Model, ModelStatic, Sequelize } from "sequelize";
+
 /**
  *
  * @export
- * @interface moviePjo
+ * @interface moviePojo
  */
-
-import { DataTypes, Model, ModelStatic, Sequelize } from "sequelize";
 
 export interface moviePojo {
   /**
