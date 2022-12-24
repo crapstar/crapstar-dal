@@ -1,6 +1,6 @@
 {
   "name": "crapstar-dal",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Data access layer to be used across crapstar app",
   "main": "build/src/index.js",
   "types": "build/src/index.d.ts",
