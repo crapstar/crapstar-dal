@@ -7,9 +7,8 @@ on:
     branches: [main]
 env:
   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-  USER_NAME: ${{ secrets.USER_NAME }}
-  USER_EMAIL: ${{ secrets.USER_EMAIL }}
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  USERNAME: ${{ secrets.USERNAME }}
+  EMAIL: ${{ secrets.EMAIL }}
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -19,16 +18,14 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v3
-        with:
-          _token: "${GITHUB_TOKEN}"
       - name: Setup NodeJS
         uses: actions/setup-node@v3
       - name: Set deployment token
         run: npm config set '//registry.npmjs.org/:_authToken' "${NPM_TOKEN}"
       - name: Set user name and email
         run: |
-          git config --global user.name "${USER_NAME}"
-          git config --global user.email "${USER_EMAIL}"
+          git config --global user.name "${USERNAME}"
+          git config --global user.email "${EMAIL}"
       - name: Checkout to main
         run: git checkout main
       - name: Set yarn config
