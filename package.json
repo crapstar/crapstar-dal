@@ -1,6 +1,6 @@
 {
   "name": "@crapstar/crapstar-dal",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Data access layer to be used across crapstar app",
   "main": "build/index.js",
   "types": "build/index.d.ts",
