@@ -1,9 +1,9 @@
 {
-  "name": "crapstar-dal",
-  "version": "0.1.1",
+  "name": "@crapstar/crapstar-dal",
+  "version": "0.0.0",
   "description": "Data access layer to be used across crapstar app",
-  "main": "build/src/index.js",
-  "types": "build/src/index.d.ts",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
   "repository": "git@github.com:crapstar/crapstar-dal.git",
   "author": "Ozan Ertürk <saitozanerturk@gmail.com>",
   "license": "MIT",
@@ -15,18 +15,23 @@
     "prebuild": "rm -rf build",
     "build": "tsc -p .",
     "test": "NODE_ENV=test jest",
-    "eslint": "eslint -c eslint.json -p ."
+    "eslint": "eslint -c .eslintrc"
   },
   "files": [
     "README.md",
     "build/"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "sequelize": "^6.27.0"
   },
   "devDependencies": {
     "@types/node": "^18.11.16",
     "eslint": "^8.30.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0",
     "typescript": "^4.9.4"
   }
 }
