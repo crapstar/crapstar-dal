@@ -9,6 +9,7 @@ env:
   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
   USER_NAME: ${{ secrets.USER_NAME }}
   USER_EMAIL: ${{ secrets.USER_EMAIL }}
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -17,9 +18,11 @@ jobs:
       packages: write
     steps:
       - name: Check out code
-        uses: actions/checkout@v3
+        uses: actions/checkout
+        with:
+          token: "${GITHUB_TOKEN}"
       - name: Setup NodeJS
-        uses: actions/setup-node@v3
+        uses: actions/setup-node
       - name: Set deployment token
         run: npm config set '//registry.npmjs.org/:_authToken' "${NPM_TOKEN}"
       - name: Set user name and email
