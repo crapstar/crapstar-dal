@@ -9,6 +9,7 @@ env:
   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
   USER_NAME: ${{ secrets.USER_NAME }}
   USER_EMAIL: ${{ secrets.USER_EMAIL }}
+  SSH_KEY: ${{ secrets.SSH_KEY }}
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -18,6 +19,8 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v3
+        with:
+          ssh-key: "${SSH_KEY}"
       - name: Setup NodeJS
         uses: actions/setup-node@v3
       - name: Set deployment token
