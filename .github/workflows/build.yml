@@ -1,0 +1,15 @@
+name: Build
+run-name: Build, lint and deploy
+on: [push]
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - run: yarn build
+      - run: yarn eslint
+  deploy:
+    provider: script
+    script: 'git checkout main && yarn config set version-git-message "[ci skip] %s" && yarn ci:publish && git pull --rebase && git push'
+    skip_cleanup: true
+    on:
+      branch: main
