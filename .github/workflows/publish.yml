@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [main]
 env:
-  NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
+  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
   USER_NAME: ${{ secrets.USER_NAME }}
   USER_EMAIL: ${{ secrets.USER_EMAIL }}
 jobs:
@@ -20,13 +20,8 @@ jobs:
         uses: actions/checkout@v3
       - name: Setup NodeJS
         uses: actions/setup-node@v3
-        with:
-          node-version: "18.x"
-          registry-url: "https://npm.pkg.github.com"
-          # Defaults to the user or organization that owns the workflow file
-          scope: "@crapstar"
       - name: Set deployment token
-        run: npm config set '//registry.npmjs.org/:_authToken' "${NODE_AUTH_TOKEN}"
+        run: npm config set '//registry.npmjs.org/:_authToken' "${NPM_TOKEN}"
       - name: Set user name and email
         run: |
           git config --global user.name "${USER_NAME}"
