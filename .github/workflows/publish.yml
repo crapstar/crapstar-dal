@@ -1,6 +1,12 @@
 name: Publish package to GitHub Packages
+run-name: Publish package to GitHub Packages
 on:
-  branch: main
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+env:
+  NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -8,9 +14,10 @@ jobs:
       contents: read
       packages: write
     steps:
-      - uses: actions/checkout@v3
-      # Setup .npmrc file to publish to GitHub Packages
-      - uses: actions/setup-node@v3
+      - name: Check out code
+        uses: actions/checkout@v3
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
         with:
           node-version: "18.x"
           registry-url: "https://npm.pkg.github.com"
