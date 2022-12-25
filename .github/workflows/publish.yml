@@ -2,9 +2,9 @@ name: Publish package to GitHub Packages
 run-name: Publish package to GitHub Packages
 on:
   push:
-    branches: [master]
+    branches: [main]
   pull_request:
-    branches: [master]
+    branches: [main]
 env:
   NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
 jobs:
