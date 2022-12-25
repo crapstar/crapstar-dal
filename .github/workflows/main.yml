@@ -1,4 +1,4 @@
-name: Build, lint and test
+name: Main
 run-name: Build, lint and test
 on: [push]
 jobs:
