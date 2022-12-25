@@ -1,0 +1,13 @@
+name: Build, lint and test
+run-name: Build, lint and test
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+      - run: yarn install
+      - run: yarn build
+      - run: yarn eslint
+      - run: yarn test
