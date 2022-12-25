@@ -5,9 +5,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-      - run: yarn install
-      - run: yarn build
-      - run: yarn eslint
-      - run: yarn test
+      - name: Check out code
+        uses: actions/checkout@v3
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
+      - name: Install modules
+        run: yarn install
+      - name: Create build
+        run: yarn build
+      - name: Lint
+        run: yarn eslint
+      - name: Run tests
+        run: yarn test
