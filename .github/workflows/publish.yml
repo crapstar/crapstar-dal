@@ -24,12 +24,9 @@ jobs:
           git config --local user.name "github-actions[bot]"
       - name: Set yarn config
         run: yarn config set version-git-message "[ci skip] %s"
-      - name: Publish
-        run: yarn ci:publish
       - name: Pull and rebase
         run: git pull --rebase
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref }}
