@@ -19,6 +19,8 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v3
+        with:
+          token: "${GITHUB_TOKEN}"
       - name: Setup NodeJS
         uses: actions/setup-node@v3
       - name: Set deployment token
@@ -36,4 +38,4 @@ jobs:
       - name: Pull and rebase
         run: git pull --rebase
       - name: Push
-        run: git push https://"${USER_NAME}":"${GITHUB_TOKEN}"@github.com/crapstar/crapstar-dal.git
+        run: git push
