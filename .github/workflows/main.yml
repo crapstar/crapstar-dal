@@ -2,7 +2,7 @@ name: Build, lint and test
 run-name: Build, lint and test
 on: [push]
 jobs:
-  build:
+  main:
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
