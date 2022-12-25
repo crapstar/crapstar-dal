@@ -1,0 +1,21 @@
+name: Publish package to GitHub Packages
+on:
+  branch: main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v3
+      # Setup .npmrc file to publish to GitHub Packages
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "18.x"
+          registry-url: "https://npm.pkg.github.com"
+          # Defaults to the user or organization that owns the workflow file
+          scope: "@crapstar"
+      - run: 'git checkout master && yarn config set version-git-message "[ci skip] %s" && yarn ci:publish && git pull --rebase && git push'
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
