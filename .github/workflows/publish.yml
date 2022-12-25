@@ -20,6 +20,8 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v3
         with:
+          repository: crapstar/crapstar-dal
+          ref: main
           token: "${GITHUB_TOKEN}"
       - name: Setup NodeJS
         uses: actions/setup-node@v3
