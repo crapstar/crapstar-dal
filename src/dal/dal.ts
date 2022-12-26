@@ -16,8 +16,8 @@ export default class Dal extends AbstractDal {
   public GenreEmotion: genre_emotion.genre_emotionModel;
   public MovieEmotion: movie_emotion.movie_emotionModel;
 
-  constructor(options: DatabaseOptions, mock = false, hooks?: SequelizeHooks) {
-    super(options, mock, hooks);
+  constructor(options: DatabaseOptions, hooks?: SequelizeHooks) {
+    super(options, hooks);
     this.Movie = movie.initMovieTable(this.Sequelize);
     this.Genre = genre.initGenreTable(this.Sequelize);
     this.MovieGenre = movie_genre.initMovieGenreTable(this.Sequelize);
