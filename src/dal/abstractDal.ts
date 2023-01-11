@@ -37,7 +37,8 @@ export abstract class AbstractDal {
         },
         dialectOptions: {
           charset: "utf8mb4",
-          ssl: options.ssl === false ? undefined : "Amazon RDS",
+          // TODO rearrange when SSL is added
+          ssl: { rejectUnauthorized: false },
         },
         retry: {
           // https://github.com/sequelize/sequelize/issues/3895
