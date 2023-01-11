@@ -15,11 +15,11 @@ export interface genrePojo {
   id: number;
 
   /**
-   * Title
+   * Name
    *
    * @type {string}
    */
-  title: string;
+  name: string;
 }
 
 export interface genreInstance extends Model<genrePojo>, genrePojo {}
@@ -37,7 +37,7 @@ export const initGenreTable = (sql: Sequelize): genreModel =>
         allowNull: false,
         unique: true,
       },
-      title: {
+      name: {
         type: DataTypes.STRING,
         allowNull: false,
       },
