@@ -23,7 +23,7 @@ export interface genre_emotionPojo {
 
   /**
    * Weight of emotion
-   * Used while calculating how much emotion emotion is related to genre
+   * Used while calculating how much emotion is related to genre
    * takes a value between 0 and 255
    *
    * @type {number}
