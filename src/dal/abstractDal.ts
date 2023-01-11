@@ -64,9 +64,6 @@ export abstract class AbstractDal {
     );
   }
 
-  /**
-   * Executes a lightweight query to verify the connection to the database.
-   */
   public async healthCheck() {
     try {
       await this.Sequelize.query("SELECT 1");

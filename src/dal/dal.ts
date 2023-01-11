@@ -45,16 +45,16 @@ export default class Dal extends AbstractDal {
       as: "emotions",
     });
 
-    this.Emotion.belongsTo(this.MovieEmotion, {
+    this.MovieEmotion.belongsTo(this.Emotion, {
       foreignKey: "emotion_id",
       targetKey: "id",
-      as: "emotion",
+      as: "movie_emotion",
     });
 
-    this.Emotion.belongsTo(this.GenreEmotion, {
+    this.GenreEmotion.belongsTo(this.Emotion, {
       foreignKey: "emotion_id",
       targetKey: "id",
-      as: "emotion",
+      as: "genre_emotion",
     });
   }
 }
