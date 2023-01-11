@@ -46,6 +46,7 @@ CREATE TABLE `movie` (
   `title` varchar(128) NOT NULL,
   `description` text NOT NULL,
   `year` smallint unsigned NOT NULL,
+  `poster_url` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `title` (`title`),
   KEY `year` (`year`)

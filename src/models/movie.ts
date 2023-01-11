@@ -34,6 +34,13 @@ export interface moviePojo {
    * @type {number}
    */
   year: number;
+
+  /**
+   * Movie poster URL
+   *
+   * @type {string | null}
+   */
+  poster_url: string | null;
 }
 
 export interface movieInstance extends Model<moviePojo>, moviePojo {}
@@ -62,6 +69,10 @@ export const initMovieTable = (sql: Sequelize): movieModel =>
       year: {
         type: DataTypes.INTEGER,
         allowNull: false,
+      },
+      poster_url: {
+        type: DataTypes.STRING,
+        allowNull: true,
       },
     },
     {
