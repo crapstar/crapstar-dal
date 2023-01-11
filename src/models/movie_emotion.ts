@@ -23,8 +23,8 @@ export interface movie_emotionPojo {
 
   /**
    * Weight of emotion
-   * Used while calculating how much emotion emotion is related to movie
-   * takes a value between 0 and 1
+   * Used while calculating how much emotion is related to movie
+   * takes a value between 0 and 255
    *
    * @type {number}
    */

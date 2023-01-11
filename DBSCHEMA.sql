@@ -55,6 +55,7 @@ CREATE TABLE `movie` (
 CREATE TABLE `movie_emotion` (
   `movie_id` bigint NOT NULL,
   `emotion_id` bigint NOT NULL,
+  `weight` tinyint unsigned NOT NULL,
   PRIMARY KEY (`movie_id`,`emotion_id`),
   KEY `movie_id` (`movie_id`),
   KEY `emotion_id` (`emotion_id`)
